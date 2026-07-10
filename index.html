@@ -39,7 +39,6 @@
       background-clip: text;
     }
     
-    /* Beautiful vinyl animation replaces the blocked frame box [G_1] */
     .vinyl-box {
       width: 200px;
       height: 200px;
@@ -74,6 +73,8 @@
       width: 100%;
       gap: 12px;
     }
+    
+    /* Styled links to look like beautiful buttons */
     .genre-btn {
       padding: 14px;
       border-radius: 14px;
@@ -82,9 +83,10 @@
       color: white;
       font-weight: 600;
       font-size: 15px;
-      cursor: pointer;
+      text-decoration: none;
       text-align: left;
       transition: background 0.2s, transform 0.1s, border-color 0.2s;
+      display: block;
     }
     .genre-btn:hover {
       background: rgba(255, 255, 255, 0.16);
@@ -100,28 +102,19 @@
   <div class="player-container">
     <h2>🎵 Ambient Jukebox</h2>
     
-    <!-- Custom visual vinyl audio graphics ring -->
     <div class="vinyl-box">
       <div class="vinyl-center">💿</div>
     </div>
 
-    <!-- Buttons launch playlists directly into a working tab framework [G_1] -->
+    <!-- Replaced buttons with pure standard HTML secure web links [G_1] -->
     <div class="playlist-buttons">
-      <button class="genre-btn" onclick="playMusic('PL4fGSI1pDJn6jEDf_M69w_Z67f0v8B_k8')">☕ 1. Chill Lo-Fi Beats</button>
-      <button class="genre-btn" onclick="playMusic('PLMC9KNkIncVtDPuxkhM6X8wX14wYUt17y')">🎹 2. Gaming Soundtracks</button>
-      <button class="genre-btn" onclick="playMusic('PL4fGSI1pDJn69Y4N4nZ6aOww_fA_5bM3_')">🌧️ 3. Rainy Jazz Cafe</button>
-      <button class="genre-btn" onclick="playMusic('PL18_Wz_M-fH7uSIdM-8K11ZgZf-9Y98F8')">✨ 4. Pop Radio Hits</button>
-      <button class="genre-btn" onclick="playMusic('PL4fGSI1pDJn7M_JpA-2NAsVvXv-PZf1qL')">🌸 5. Anime Chill Vibes</button>
+      <a class="genre-btn" href="https://youtube.com" target="_blank">☕ 1. Chill Lo-Fi Beats</a>
+      <a class="genre-btn" href="https://youtube.com" target="_blank">🎹 2. Gaming Soundtracks</a>
+      <a class="genre-btn" href="https://youtube.com_" target="_blank">🌧️ 3. Rainy Jazz Cafe</a>
+      <a class="genre-btn" href="https://youtube.com" target="_blank">✨ 4. Pop Radio Hits</a>
+      <a class="genre-btn" href="https://youtube.com" target="_blank">🌸 5. Anime Chill Vibes</a>
     </div>
-
-  </div> <!-- This closes your player-container div -->
-
-  <script>
-    function playMusic(playlistId) {
-      // The official, standard link layout that opens the playlist files across all devices
-      window.open('https://www.youtube.com/playlist?list=' + playlistId, '_blank');
-    }
-  </script>
+  </div>
 
 </body>
 </html>
