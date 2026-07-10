@@ -33,36 +33,62 @@
       align-items: center;
     }
     h2 { 
-      font-weight: 700; font-size: 22px; margin-top: 0; margin-bottom: 20px; 
+      font-weight: 700; font-size: 22px; margin-top: 0; margin-bottom: 25px; 
       background: linear-gradient(90deg, #ff71ce, #b967ff, #01cdfe);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    iframe {
-      width: 100%; height: 260px; border-radius: 16px; border: none;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-      margin-bottom: 25px;
+    
+    /* Beautiful vinyl animation replaces the blocked frame box [G_1] */
+    .vinyl-box {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #111 20%, #333 40%, #111 50%, #222 70%, #000 100%);
+      border: 6px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(185, 103, 255, 0.2);
+      margin-bottom: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      animation: spin 4s linear infinite;
     }
+    .vinyl-center {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #ff71ce, #b967ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
     .playlist-buttons {
       display: flex;
       flex-direction: column;
       width: 100%;
-      gap: 10px;
+      gap: 12px;
     }
     .genre-btn {
-      padding: 12px;
-      border-radius: 12px;
+      padding: 14px;
+      border-radius: 14px;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.07);
       color: white;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 15px;
       cursor: pointer;
       text-align: left;
-      transition: background 0.2s, transform 0.1s;
+      transition: background 0.2s, transform 0.1s, border-color 0.2s;
     }
     .genre-btn:hover {
-      background: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(185, 103, 255, 0.4);
     }
     .genre-btn:active {
       transform: scale(0.98);
@@ -74,27 +100,25 @@
   <div class="player-container">
     <h2>🎵 Ambient Jukebox</h2>
     
-    <!-- Restored back to the standard official youtube.com domain [G_1] -->
-    <iframe 
-      id="music-player"
-      src="https://youtube.com" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
+    <!-- Custom visual vinyl audio graphics ring -->
+    <div class="vinyl-box">
+      <div class="vinyl-center">💿</div>
+    </div>
 
+    <!-- Buttons launch playlists directly into a working tab framework [G_1] -->
     <div class="playlist-buttons">
-      <button class="genre-btn" onclick="changePlaylist('PL4fGSI1pDJn6jEDf_M69w_Z67f0v8B_k8')">☕ 1. Chill Lo-Fi Beats</button>
-      <button class="genre-btn" onclick="changePlaylist('PLMC9KNkIncVtDPuxkhM6X8wX14wYUt17y')">🎹 2. Gaming Soundtracks</button>
-      <button class="genre-btn" onclick="changePlaylist('PL4fGSI1pDJn69Y4N4nZ6aOww_fA_5bM3_')">🌧️ 3. Rainy Jazz Cafe</button>
-      <button class="genre-btn" onclick="changePlaylist('PL18_Wz_M-fH7uSIdM-8K11ZgZf-9Y98F8')">✨ 4. Pop Radio Hits</button>
-      <button class="genre-btn" onclick="changePlaylist('PL4fGSI1pDJn7M_JpA-2NAsVvXv-PZf1qL')">🌸 5. Anime Chill Vibes</button>
+      <button class="genre-btn" onclick="playMusic('PL4fGSI1pDJn6jEDf_M69w_Z67f0v8B_k8')">☕ 1. Chill Lo-Fi Beats</button>
+      <button class="genre-btn" onclick="playMusic('PLMC9KNkIncVtDPuxkhM6X8wX14wYUt17y')">🎹 2. Gaming Soundtracks</button>
+      <button class="genre-btn" onclick="playMusic('PL4fGSI1pDJn69Y4N4nZ6aOww_fA_5bM3_')">🌧️ 3. Rainy Jazz Cafe</button>
+      <button class="genre-btn" onclick="playMusic('PL18_Wz_M-fH7uSIdM-8K11ZgZf-9Y98F8')">✨ 4. Pop Radio Hits</button>
+      <button class="genre-btn" onclick="playMusic('PL4fGSI1pDJn7M_JpA-2NAsVvXv-PZf1qL')">🌸 5. Anime Chill Vibes</button>
     </div>
   </div>
 
   <script>
-    function changePlaylist(playlistId) {
-      const player = document.getElementById('music-player');
-      player.src = `https://youtube.com{playlistId}&autoplay=1&mute=1`;
+    function playMusic(playlistId) {
+      // Bypasses the iframe block entirely by using an open target command link [G_1]
+      window.open(`https://youtube.com{playlistId}`, '_blank');
     }
   </script>
 
