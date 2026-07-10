@@ -1,1 +1,103 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My Jukebox</title><style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(135deg,#0f0c1b 0%,#201335 40%,#3a114d 70%,#631247 100%);background-attachment:fixed;color:#fff;margin:0;padding:20px;display:flex;justify-content:center;align-items:center;min-height:100vh;box-sizing:border-box}.player-container{width:100%;max-width:420px;background:rgba(255,255,255,.06);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);padding:25px;border-radius:24px;box-shadow:0 15px 35px rgba(0,0,0,.4);display:flex;flex-direction:column;align-items:center}h2{font-weight:700;font-size:22px;letter-spacing:-.5px;margin-top:0;margin-bottom:20px;background:linear-gradient(90deg,#ff71ce,#b967ff,#01cdfe);-webkit-background-clip:text;-webkit-text-fill-color:transparent}iframe{width:100%;height:260px;border-radius:16px;border:none;box-shadow:0 10px 30px rgba(0,0,0,.6)}.controls{margin-top:25px;display:flex;width:100%;gap:12px}input{flex:1;padding:14px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background-color:rgba(0,0,0,.3);color:#fff;font-size:15px;outline:none;transition:border .3s}input:focus{border-color:#b967ff}button{padding:14px 20px;border-radius:12px;border:none;background:linear-gradient(135deg,#a13eff 0%,#e61b72 100%);color:#fff;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 4px 15px rgba(230,27,114,.3);transition:transform .1s,opacity .2s}button:active{transform:scale(.97);opacity:.9}</style></head><body><div class="player-container"><h2>🎵 Ambient Jukebox</h2><iframe id="music-player" src="https://youtube.com" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="controls"><input type="text" id="playlist-id-input" placeholder="Paste YouTube Playlist ID..."><button id="save-btn">Load</button></div></div><script>const player=document.getElementById("music-player"),inputField=document.getElementById("playlist-id-input"),saveButton=document.getElementById("save-btn"),savedId=localStorage.getItem("savedPlaylistId");savedId&&(player.src=`https://youtube.com{savedId}&autoplay=1&mute=1`,inputField.value=savedId),saveButton.addEventListener("click",(()=>{const e=inputField.value.trim();e&&(player.src=`https://youtube.com{e}&autoplay=1&mute=1`,localStorage.setItem("savedPlaylistId",e))}));</script></body></html>.
+html<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Jukebox</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #0f0c1b 0%, #201335 40%, #3a114d 70%, #631247 100%);
+      background-attachment: fixed;
+      color: #ffffff;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .player-container {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 { 
+      font-weight: 700; font-size: 22px; margin-top: 0; margin-bottom: 20px; 
+      background: linear-gradient(90deg, #ff71ce, #b967ff, #01cdfe);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    iframe {
+      width: 100%; height: 260px; border-radius: 16px; border: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      margin-bottom: 25px;
+    }
+    .playlist-buttons {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+    }
+    .genre-btn {
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .genre-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
+    .genre-btn:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="player-container">
+    <h2>🎵 Ambient Jukebox</h2>
+    
+    <!-- Video embed source frame [G_1] -->
+    <iframe 
+      id="music-player"
+      src="https://youtube-nocookie.com" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+
+    <!-- Quick select genre buttons block [G_1] -->
+    <div class="playlist-buttons">
+      <button class="genre-btn" onclick="changePlaylist('PL4fGSI1pDJn6jEDf_M69w_Z67f0v8B_k8')">☕ 1. Chill Lo-Fi Beats</button>
+      <button class="genre-btn" onclick="changePlaylist('PLMC9KNkIncVtDPuxkhM6X8wX14wYUt17y')">🎹 2. Gaming Soundtracks</button>
+      <button class="genre-btn" onclick="changePlaylist('PL4fGSI1pDJn69Y4N4nZ6aOww_fA_5bM3_')">🌧️ 3. Rainy Jazz Cafe</button>
+      <button class="genre-btn" onclick="changePlaylist('PL18_Wz_M-fH7uSIdM-8K11ZgZf-9Y98F8')">✨ 4. Pop Radio Hits</button>
+      <button class="genre-btn" onclick="changePlaylist('PL4fGSI1pDJn7M_JpA-2NAsVvXv-PZf1qL')">🌸 5. Anime Chill Vibes</button>
+    </div>
+  </div>
+
+  <script>
+    function changePlaylist(playlistId) {
+      const player = document.getElementById('music-player');
+      player.src = `https://youtube-nocookie.com{playlistId}&autoplay=1&mute=1`;
+    }
+  </script>
+
+</body>
+</html>
