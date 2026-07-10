@@ -113,13 +113,15 @@
       <button class="genre-btn" onclick="playMusic('PL18_Wz_M-fH7uSIdM-8K11ZgZf-9Y98F8')">✨ 4. Pop Radio Hits</button>
       <button class="genre-btn" onclick="playMusic('PL4fGSI1pDJn7M_JpA-2NAsVvXv-PZf1qL')">🌸 5. Anime Chill Vibes</button>
     </div>
-    
-    </div> <!-- This closes the player-container div -->
+
+  </div> <!-- This closes your player-container div -->
 
   <script>
     function playMusic(playlistId) {
-      window.open('https://youtube.com' + playlistId, '_blank');
+      // The official, standard link layout that opens the playlist files across all devices
+      window.open('https://www.youtube.com/playlist?list=' + playlistId, '_blank');
     }
   </script>
+
 </body>
 </html>
