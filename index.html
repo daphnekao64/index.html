@@ -74,15 +74,14 @@
   <div class="player-container">
     <h2>🎵 Ambient Jukebox</h2>
     
-    <!-- Video embed source frame [G_1] -->
+    <!-- Restored back to the standard official youtube.com domain [G_1] -->
     <iframe 
       id="music-player"
-      src="https://youtube-nocookie.com" 
+      src="https://youtube.com" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
 
-    <!-- Quick select genre buttons block [G_1] -->
     <div class="playlist-buttons">
       <button class="genre-btn" onclick="changePlaylist('PL4fGSI1pDJn6jEDf_M69w_Z67f0v8B_k8')">☕ 1. Chill Lo-Fi Beats</button>
       <button class="genre-btn" onclick="changePlaylist('PLMC9KNkIncVtDPuxkhM6X8wX14wYUt17y')">🎹 2. Gaming Soundtracks</button>
@@ -95,7 +94,7 @@
   <script>
     function changePlaylist(playlistId) {
       const player = document.getElementById('music-player');
-      player.src = `https://youtube-nocookie.com{playlistId}&autoplay=1&mute=1`;
+      player.src = `https://youtube.com{playlistId}&autoplay=1&mute=1`;
     }
   </script>
 
